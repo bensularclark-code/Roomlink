@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>RoomLink — Student Accommodation Finder</title>
+<meta name="description" content="Find verified off-campus accommodation near your university. Connect directly with landlords through fellow students."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ===== TOAST ===== -->
+<div class="toast" id="toast"></div>
+
+<!-- ===== AUTH MODAL ===== -->
+<div class="modal-overlay" id="authModal">
+  <div class="modal">
+    <button class="modal-close" id="closeAuthModal">✕</button>
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-tab="login">Log In</button>
+      <button class="auth-tab" data-tab="register">Sign Up</button>
+    </div>
+
+    <!-- Login Form -->
+    <div id="loginForm" class="auth-form">
+      <h2>Welcome back</h2>
+      <p class="auth-sub">Log in to list rooms, reveal landlord contacts, and track your activity.</p>
+      <div class="field">
+        <label>Email address</label>
+        <input type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email"/>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="loginPassword" placeholder="Your password" autocomplete="current-password"/>
+      </div>
+      <div class="field-error" id="loginError"></div>
+      <button class="btn-primary btn-full" id="loginBtn">Log In</button>
+    </div>
+
+    <!-- Register Form -->
+    <div id="registerForm" class="auth-form" style="display:none">
+      <h2>Create account</h2>
+      <p class="auth-sub">Join RoomLink to find and list student accommodation.</p>
+      <div class="field">
+        <label>Full name</label>
+        <input type="text" id="regName" placeholder="e.g. Amaka Okonkwo"/>
+      </div>
+      <div class="field">
+        <label>Email address</label>
+        <input type="email" id="regEmail" placeholder="you@example.com"/>
+      </div>
+      <div class="field">
+        <label>Phone (optional)</label>
+        <input type="tel" id="regPhone" placeholder="e.g. 08012345678"/>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="regPassword" placeholder="At least 6 characters"/>
+      </div>
+      <div class="field-error" id="registerError"></div>
+      <button class="btn-primary btn-full" id="registerBtn">Create Account</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== LISTING DETAIL MODAL ===== -->
+<div class="modal-overlay" id="detailModal">
+  <div class="modal modal-wide" id="detailContent">
+    <!-- filled by JS -->
+  </div>
+</div>
+
+<!-- ===== PAYMENT MODAL ===== -->
+<div class="modal-overlay" id="payModal">
+  <div class="modal">
+    <button class="modal-close" id="closePayModal">✕</button>
+    <div id="payContent"><!-- filled by JS --></div>
+  </div>
+</div>
+
+<!-- ===== APP ===== -->
+<div class="app">
+
+  <!-- HEADER -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5a1 1 0 0 0 1 1H17.5a1 1 0 0 0 1-1V10"/></svg>
+      </div>
+      <div>
+        <div class="brand-name">RoomLink</div>
+        <div class="brand-sub">Student Accommodation Finder</div>
+      </div>
+    </div>
+    <nav class="tabs">
+      <button class="tab-btn active" data-view="browse">Browse</button>
+      <button class="tab-btn" data-view="list">List a Room</button>
+      <button class="tab-btn" data-view="fees">How Fees Work</button>
+      <button class="tab-btn" data-view="dashboard" id="dashTab" style="display:none">My Account</button>
+    </nav>
+    <div class="header-auth">
+      <button class="btn-ghost" id="authBtn">Log In</button>
+      <div class="user-pill" id="userPill" style="display:none">
+        <div class="user-av" id="userAv"></div>
+        <span id="userName"></span>
+        <button class="btn-ghost-sm" id="logoutBtn">Log out</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main id="main"></main>
+
+  <footer class="site-footer">
+    <p>RoomLink · Built for Nigerian university students · Payments secured by Paystack</p>
+  </footer>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
